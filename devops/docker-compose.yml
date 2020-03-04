@@ -3,11 +3,13 @@ version: '3.3'
 services:
     mongo:
         build:
+            context: .
             dockerfile: MongoDB
         ports:
            - '27017:27017'
     tomcat:
         build:
+            context: .
             dockerfile: Tomcat
         depends_on:
             - 'mongo'

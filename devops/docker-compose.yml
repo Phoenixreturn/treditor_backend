@@ -4,8 +4,8 @@ services:
     mongo:
         build:
             dockerfile: MongoDB
-            ports:
-                - '27017:27017'
+        ports:
+           - '27017:27017'
     tomcat:
         build:
             dockerfile: Tomcat

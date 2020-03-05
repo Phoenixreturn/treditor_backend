@@ -9,26 +9,12 @@ import org.springframework.data.mongodb.core.convert.DefaultDbRefResolver;
 import org.springframework.data.mongodb.core.convert.DefaultMongoTypeMapper;
 import org.springframework.data.mongodb.core.convert.MappingMongoConverter;
 import org.springframework.data.mongodb.core.mapping.MongoMappingContext;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.devon.treditor.mongo.Domain;
-import com.devon.treditor.mongo.DomainRepository;
 
 @SpringBootApplication
 public class TreditorApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(TreditorApplication.class, args);
-	}
-
-	@RequestMapping("/")
-	public String handle(DomainRepository domainRepository) {
-		Domain obj2 = domainRepository.findFirstByDomain("mkyong.com");
-		System.out.println(obj2);
-
-		int n = domainRepository.updateDomain("mkyong.com", true);
-		System.out.println("Number of records updated : " + n);
-		return String.valueOf(n);
 	}
 
 	@Bean

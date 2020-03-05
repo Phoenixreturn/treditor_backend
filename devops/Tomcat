@@ -6,6 +6,8 @@ COPY context.xml /usr/local/tomcat/webapps/manager/META-INF
 
 ENV JPDA_ADDRESS=*:8100
 ENV JPDA_TRANSPORT=dt_socket
+ENV JPDA_SERVER=y
+ENV JPDA_SUSPEND=n
 
 EXPOSE 8100
 

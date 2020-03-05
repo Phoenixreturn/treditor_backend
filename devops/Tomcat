@@ -4,8 +4,8 @@ COPY tomcat-users.xml /usr/local/tomcat/conf
 RUN rm -rf /usr/local/tomcat/webapps && mv /usr/local/tomcat/webapps.dist /usr/local/tomcat/webapps
 COPY context.xml /usr/local/tomcat/webapps/manager/META-INF
 
-ENV JPDA_ADDRESS=localhost:8100
+ENV JPDA_ADDRESS=*:55555
 
-EXPOSE 8100
+EXPOSE 55555
 
 CMD ["catalina.sh", "jpda", "run"]

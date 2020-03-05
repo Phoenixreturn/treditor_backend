@@ -9,4 +9,4 @@ ENV JPDA_TRANSPORT=dt_socket
 
 EXPOSE 8000
 
-CMD ["catalina.sh", "jpda", "start"]
+CMD ["catalina.sh", "jpda", "run"]

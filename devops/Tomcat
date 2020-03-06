@@ -8,4 +8,4 @@ ENV JPDA_ADDRESS=*:55555
 
 EXPOSE 55555
 
-CMD ["catalina.sh", "jpda", "start"]
+CMD ["catalina.sh", "jpda", "run"]

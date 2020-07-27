@@ -1,4 +1,4 @@
-package com.devon.treditor.mongo.whiteboard;
+package com.devon.treditor.entity.shapes;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

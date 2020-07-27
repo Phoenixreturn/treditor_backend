@@ -1,17 +1,17 @@
-package com.devon.treditor;
+package com.devon.treditor.controller;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-import com.devon.treditor.mongo.whiteboard.Primitive;
-import com.devon.treditor.mongo.whiteboard.PrimitiveRepository;
+import com.devon.treditor.entity.shapes.Primitive;
+import com.devon.treditor.repository.PrimitiveRepository;
 
 @CrossOrigin
-@RestController
+@Controller
 public class PrimitiveController {
 
 	@Autowired

@@ -1,4 +1,4 @@
-package payload.response;
+package com.devon.treditor.payload.response;
 
 public class MessageResponse {
 	private String message;

@@ -24,14 +24,13 @@ import com.devon.treditor.entity.ERole;
 import com.devon.treditor.entity.Role;
 import com.devon.treditor.entity.User;
 import com.devon.treditor.jwt.JwtUtils;
+import com.devon.treditor.payload.request.LoginRequest;
+import com.devon.treditor.payload.request.SignupRequest;
+import com.devon.treditor.payload.response.JwtResponse;
+import com.devon.treditor.payload.response.MessageResponse;
 import com.devon.treditor.repository.RoleRepository;
 import com.devon.treditor.repository.UserRepository;
 import com.devon.treditor.service.UserDetailsImpl;
-
-import payload.request.LoginRequest;
-import payload.request.SignupRequest;
-import payload.response.JwtResponse;
-import payload.response.MessageResponse;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController

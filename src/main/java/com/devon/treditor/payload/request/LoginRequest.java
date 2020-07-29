@@ -1,4 +1,4 @@
-package payload.request;
+package com.devon.treditor.payload.request;
 
 import javax.validation.constraints.NotBlank;
 

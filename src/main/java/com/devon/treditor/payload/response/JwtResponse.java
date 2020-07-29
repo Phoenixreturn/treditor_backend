@@ -1,4 +1,4 @@
-package payload.response;
+package com.devon.treditor.payload.response;
 
 import java.util.List;
 

@@ -1,5 +1,7 @@
 package com.devon.treditor.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,8 +12,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/test")
 public class TestController {
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(TestController.class);
+
 	@GetMapping("/all")
 	public String allAccess() {
+		LOGGER.trace("A TRACE Message");
+		LOGGER.debug("A DEBUG Message");
+		LOGGER.info("An INFO Message");
+		LOGGER.warn("A WARN Message");
+		LOGGER.error("An ERROR Message");
+
 		return "Public Content.";
 	}
 

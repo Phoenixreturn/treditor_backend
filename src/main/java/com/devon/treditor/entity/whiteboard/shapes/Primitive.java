@@ -1,4 +1,6 @@
-package com.devon.treditor.entity.shapes;
+package com.devon.treditor.entity.whiteboard.shapes;
+
+import javax.validation.constraints.NotBlank;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -6,15 +8,24 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "primitives")
 public class Primitive {
 
+	@Id
+	private String id;
+
+	@NotBlank
+	private String name;
+
+	private int width;
+
+	private int height;
+
+	public Primitive() {
+	}
+
 	public Primitive(int width, int height) {
 		this.width = width;
 		this.height = height;
 		this.name = String.valueOf(width) + ' ' + String.valueOf(height);
 	}
-
-	@Id
-	private String id;
-	private String name;
 
 	public String getName() {
 		return name;
@@ -47,7 +58,4 @@ public class Primitive {
 	public void setHeight(int height) {
 		this.height = height;
 	}
-
-	private int width;
-	private int height;
 }

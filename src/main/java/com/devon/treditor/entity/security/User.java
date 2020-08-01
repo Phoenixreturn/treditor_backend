@@ -1,4 +1,4 @@
-package com.devon.treditor.entity;
+package com.devon.treditor.entity.security;
 
 import java.util.HashSet;
 import java.util.Set;

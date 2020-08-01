@@ -20,9 +20,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.devon.treditor.entity.ERole;
-import com.devon.treditor.entity.Role;
-import com.devon.treditor.entity.User;
+import com.devon.treditor.entity.security.ERole;
+import com.devon.treditor.entity.security.Role;
+import com.devon.treditor.entity.security.User;
 import com.devon.treditor.jwt.JwtUtils;
 import com.devon.treditor.payload.request.LoginRequest;
 import com.devon.treditor.payload.request.SignupRequest;

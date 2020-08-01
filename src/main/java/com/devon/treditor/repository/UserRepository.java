@@ -4,7 +4,7 @@ import java.util.Optional;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-import com.devon.treditor.entity.User;
+import com.devon.treditor.entity.security.User;
 
 public interface UserRepository extends MongoRepository<User, String> {
 	Optional<User> findByUsername(String username);

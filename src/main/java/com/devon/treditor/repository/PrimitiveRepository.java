@@ -2,8 +2,8 @@ package com.devon.treditor.repository;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-import com.devon.treditor.entity.whiteboard.shapes.Primitive;
+import com.devon.treditor.entity.whiteboard.shapes.Shape;
 
-public interface PrimitiveRepository extends MongoRepository<Primitive, String> {
+public interface PrimitiveRepository extends MongoRepository<Shape, String> {
 }
 

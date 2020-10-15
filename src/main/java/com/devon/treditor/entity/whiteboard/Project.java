@@ -10,10 +10,10 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.devon.treditor.entity.whiteboard.shapes.Primitive;
+import com.devon.treditor.entity.whiteboard.shapes.Shape;
 
 @Document(collection = "documents")
-public class Paper {
+public class Project {
 
 	@Id
 	private String id;
@@ -23,15 +23,15 @@ public class Paper {
 	private String documentName;
 
 	@DBRef
-	private List<Primitive> primitives = new ArrayList<>();
+	private List<Shape> primitives = new ArrayList<>();
 
-	public Paper() {}
+	public Project() {}
 
-	public Paper(String documentName) {
+	public Project(String documentName) {
 		this.documentName = documentName;
 	}
 
-	public void addPrimitive(Primitive primitive) {
+	public void addPrimitive(Shape primitive) {
 		primitives.add(primitive);
 	}
 
@@ -51,11 +51,11 @@ public class Paper {
 		return documentName;
 	}
 
-	public List<Primitive> getPrimitives() {
+	public List<Shape> getPrimitives() {
 		return primitives;
 	}
 
-	public void setPrimitives(List<Primitive> primitives) {
+	public void setPrimitives(List<Shape> primitives) {
 		this.primitives = primitives;
 	}
 }

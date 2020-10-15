@@ -2,12 +2,14 @@ package com.devon.treditor.controller;
 
 import java.util.List;
 
+import com.devon.treditor.entity.whiteboard.shapes.Circle;
+import com.devon.treditor.entity.whiteboard.shapes.Rectangle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.devon.treditor.entity.whiteboard.shapes.Primitive;
+import com.devon.treditor.entity.whiteboard.shapes.Shape;
 import com.devon.treditor.repository.PrimitiveRepository;
 
 @CrossOrigin
@@ -19,14 +21,14 @@ public class PrimitiveController {
 
 	public PrimitiveController(PrimitiveRepository primitiveRepository) {
 		this.primitiveRepository = primitiveRepository;
-		primitiveRepository.insert(new Primitive(100, 200));
-		primitiveRepository.insert(new Primitive(200, 300));
-		primitiveRepository.insert(new Primitive(300, 400));
-		primitiveRepository.insert(new Primitive(400, 500));
+		primitiveRepository.insert(new Circle());
+		primitiveRepository.insert(new Circle());
+		primitiveRepository.insert(new Rectangle());
+		primitiveRepository.insert(new Rectangle());
 	}
 
 	@GetMapping("/primitives")
-	public List<Primitive> getAllPrimitives() {
+	public List<Shape> getAllPrimitives() {
 		return primitiveRepository.findAll();
 	}
 }

@@ -3,21 +3,23 @@ package com.devon.treditor.controller;
 import java.util.List;
 import java.util.Random;
 
+import com.devon.treditor.entity.whiteboard.shapes.Circle;
+import com.devon.treditor.entity.whiteboard.shapes.Rectangle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.devon.treditor.entity.whiteboard.Paper;
-import com.devon.treditor.entity.whiteboard.shapes.Primitive;
+import com.devon.treditor.entity.whiteboard.Project;
+import com.devon.treditor.entity.whiteboard.shapes.Shape;
 import com.devon.treditor.repository.PaperRepository;
 import com.devon.treditor.repository.PrimitiveRepository;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("api/paper")
-public class PaperController {
+@RequestMapping("whiteboard")
+public class ProjectController {
 
 	@Autowired
 	PaperRepository paperRepository;
@@ -26,20 +28,25 @@ public class PaperController {
 	PrimitiveRepository primitveRepository;
 
 	@GetMapping("/create_random")
-	public Paper createRandomDocument() {
+	public Project createRandomDocument() {
 		Random random = new Random();
-		Paper paper = new Paper("Paper" + random.nextInt(1000));
-		Primitive primitve = new Primitive(random.nextInt(1000), random.nextInt(1000));
-		primitveRepository.save(primitve);
-		paper.addPrimitive(primitve);
+		Project paper = new Project("Paper" + random.nextInt(1000));
+		int width = random.nextInt(1000);
+		int height = random.nextInt(1000);
+		Shape shape1 = new Circle();
+		Shape shape2 = new Rectangle();
+
+		primitveRepository.save(shape1);
+		paper.addPrimitive(shape1);
+		primitveRepository.save(shape2);
+		paper.addPrimitive(shape2);
 		paperRepository.save(paper);
 
 		return paper;
 	}
 
-	@GetMapping("/all")
-	public List<Paper> getAllPapers() {
+	@GetMapping("/projects")
+	public List<Project> getAllPapers() {
 		return paperRepository.findAll();
 	}
-
 }

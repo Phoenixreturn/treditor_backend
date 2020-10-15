@@ -1,0 +1,19 @@
+swagger: "2.0"
+info:
+  description: "Treditor"
+  title: "Treditor"
+  version: "1.0.0"
+host: "petstore.swagger.io"
+basePath: "/v2"
+paths:
+  /helloTreditor:
+    get:
+      tags:
+        - "treditor"
+      description: "First route with swagger"
+      operationId: "makeHello"
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: string

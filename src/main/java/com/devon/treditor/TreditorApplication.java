@@ -12,8 +12,4 @@ public class TreditorApplication extends SpringBootServletInitializer {
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 		return application.sources(TreditorApplication.class);
 	}
-
-	public static void main(String[] args) {
-		SpringApplication.run(TreditorApplication.class, args);
-	}
 }

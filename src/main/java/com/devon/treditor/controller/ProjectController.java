@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.devon.treditor.entity.whiteboard.Project;
 import com.devon.treditor.entity.whiteboard.shapes.Shape;
-import com.devon.treditor.repository.PaperRepository;
-import com.devon.treditor.repository.PrimitiveRepository;
+import com.devon.treditor.repository.ProjectRepository;
+import com.devon.treditor.repository.ShapeRepository;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -22,10 +22,10 @@ import com.devon.treditor.repository.PrimitiveRepository;
 public class ProjectController {
 
 	@Autowired
-	PaperRepository paperRepository;
+    ProjectRepository paperRepository;
 	
 	@Autowired
-	PrimitiveRepository primitveRepository;
+    ShapeRepository primitveRepository;
 
 	@GetMapping("/create_random")
 	public Project createRandomDocument() {

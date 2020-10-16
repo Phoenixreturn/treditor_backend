@@ -4,6 +4,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import com.devon.treditor.entity.whiteboard.Project;
 
-public interface PaperRepository extends MongoRepository<Project, String> {
+public interface ProjectRepository extends MongoRepository<Project, String> {
 
 }

@@ -10,16 +10,16 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.devon.treditor.entity.whiteboard.shapes.Shape;
-import com.devon.treditor.repository.PrimitiveRepository;
+import com.devon.treditor.repository.ShapeRepository;
 
 @CrossOrigin
 @Controller
 public class PrimitiveController {
 
 	@Autowired
-	PrimitiveRepository primitiveRepository;
+    ShapeRepository primitiveRepository;
 
-	public PrimitiveController(PrimitiveRepository primitiveRepository) {
+	public PrimitiveController(ShapeRepository primitiveRepository) {
 		this.primitiveRepository = primitiveRepository;
 		primitiveRepository.insert(new Circle());
 		primitiveRepository.insert(new Circle());

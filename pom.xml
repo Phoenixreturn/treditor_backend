@@ -127,6 +127,7 @@
                         <generateSupportingFiles>false</generateSupportingFiles>
 						<importMappings>
 							<importMapping>Shape=com.devon.treditor.entity.whiteboard.shapes.Shape</importMapping>
+							<importMapping>Project=com.devon.treditor.entity.whiteboard.Project</importMapping>
 						</importMappings>
                         <configOptions>
 							<useTags>true</useTags>

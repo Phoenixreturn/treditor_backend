@@ -37,7 +37,7 @@ paths:
         '200':
           description: OK
           schema:
-            type: string
+            $ref: '#/components/schemas/Project'
 
 definitions:
   ProjectInfo:

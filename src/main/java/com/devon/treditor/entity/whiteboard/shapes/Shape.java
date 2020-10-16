@@ -2,9 +2,20 @@ package com.devon.treditor.entity.whiteboard.shapes;
 
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+@JsonTypeInfo(
+		use = JsonTypeInfo.Id.NAME,
+		include = JsonTypeInfo.As.PROPERTY,
+		property = "type")
+@JsonSubTypes({
+		@Type(value = Circle.class, name = "vCircle"),
+		@Type(value = Rectangle.class, name = "vRect")
+})
 @Document(collection = "shapes")
 abstract public class Shape {
 	@Id
@@ -18,7 +29,6 @@ abstract public class Shape {
 	private float scaleY;
 	private float x;
 	private float y;
-	private Type type;
 
 	public String getId() {
 		return id;
@@ -90,13 +100,5 @@ abstract public class Shape {
 
 	public void setY(float y) {
 		this.y = y;
-	}
-
-	public Type getType() {
-		return type;
-	}
-
-	public void setType(Type type) {
-		this.type = type;
 	}
 }

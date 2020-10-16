@@ -125,7 +125,11 @@
                         <generateModelDocumentation>false</generateModelDocumentation>
                         <generateModelTests>false</generateModelTests>
                         <generateSupportingFiles>false</generateSupportingFiles>
+						<importMappings>
+							<importMapping>Shape=com.devon.treditor.entity.whiteboard.shapes.Shape</importMapping>
+						</importMappings>
                         <configOptions>
+							<useTags>true</useTags>
                             <interfaceOnly>true</interfaceOnly>
                             <java8>true</java8>
                             <delegatePattern>true</delegatePattern>

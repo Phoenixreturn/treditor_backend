@@ -3,17 +3,49 @@ info:
   description: "Treditor"
   title: "Treditor"
   version: "1.0.0"
-host: "petstore.swagger.io"
-basePath: "/v2"
+tags:
+  - name: treditor
+    description: Everything you can edit
 paths:
   /helloTreditor:
     get:
       tags:
-        - "treditor"
-      description: "First route with swagger"
-      operationId: "makeHello"
+        - treditor
+      description: First route with swagger
+      operationId: makeHello
       responses:
         '200':
           description: OK
           schema:
             type: string
+  /saveProject:
+    post:
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      tags:
+        - treditor
+      description: save shapes to any project
+      operationId: saveProject
+      parameters:
+        - name: projectInfo
+          in: body
+          schema:
+           $ref: '#/definitions/ProjectInfo'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: string
+
+definitions:
+  ProjectInfo:
+    type: object
+    description: Информация о проекте
+    properties:
+      shapes:
+        type: array
+        description: коллекция всех фигур в проекте
+        items:
+          $ref: '#/components/schemas/Shape'

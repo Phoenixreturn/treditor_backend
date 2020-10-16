@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 
 @Controller
-public class HelloTreditorController implements HelloTreditorApi {
+public class HelloTreditorController implements TreditorApi {
     @Override
     public ResponseEntity<String> makeHello() {
         return new ResponseEntity<>("hello treditor", HttpStatus.OK);

@@ -17,6 +17,10 @@ import org.springframework.web.cors.CorsConfiguration;
 import com.devon.treditor.jwt.AuthEntryPointJwt;
 import com.devon.treditor.jwt.AuthTokenFilter;
 import com.devon.treditor.service.UserDetailsServiceImpl;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import java.util.Arrays;
 
 @Configuration
 @EnableWebSecurity
@@ -50,8 +54,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-//		http.cors();
-		http.cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues());
+		http.cors();
 		http.csrf().disable();
 
 		http.exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
@@ -62,5 +65,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().anyRequest().permitAll();
 
 		http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+	}
+
+	@Bean
+	public CorsConfigurationSource corsConfigurationSource() {
+		CorsConfiguration configuration = new CorsConfiguration();
+		configuration.setAllowedOrigins(Arrays.asList("*"));
+		configuration.setAllowedMethods(Arrays.asList("GET","POST","PUT","DELETE","OPTIONS"));
+		configuration.setAllowedHeaders(Arrays.asList("*"));
+		configuration.setMaxAge(1800L);
+		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+		source.registerCorsConfiguration("/**", configuration);
+		return source;
 	}
 }

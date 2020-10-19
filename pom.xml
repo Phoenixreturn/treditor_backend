@@ -128,6 +128,7 @@
 						<importMappings>
 							<importMapping>Shape=com.devon.treditor.entity.whiteboard.shapes.Shape</importMapping>
 							<importMapping>Project=com.devon.treditor.entity.whiteboard.Project</importMapping>
+							<importMapping>ObjectId=org.bson.types.ObjectId</importMapping>
 						</importMappings>
                         <configOptions>
 							<useTags>true</useTags>

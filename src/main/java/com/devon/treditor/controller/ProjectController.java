@@ -20,33 +20,16 @@ import com.devon.treditor.repository.ShapeRepository;
 @RestController
 @RequestMapping("whiteboard")
 public class ProjectController {
-
 	@Autowired
-    ProjectRepository paperRepository;
-	
-	@Autowired
-    ShapeRepository primitveRepository;
+    ProjectRepository projectRepository;
 
 	@GetMapping("/create_random")
 	public Project createRandomDocument() {
 		Random random = new Random();
-		Project paper = new Project("Paper" + random.nextInt(1000));
-		int width = random.nextInt(1000);
-		int height = random.nextInt(1000);
-		Shape shape1 = new Circle();
-		Shape shape2 = new Rectangle();
+		Project project = new Project();
+		project.setName("Project" + random.nextInt(1000));
+		projectRepository.save(project);
 
-		primitveRepository.save(shape1);
-		paper.addPrimitive(shape1);
-		primitveRepository.save(shape2);
-		paper.addPrimitive(shape2);
-		paperRepository.save(paper);
-
-		return paper;
-	}
-
-	@GetMapping("/projects")
-	public List<Project> getAllPapers() {
-		return paperRepository.findAll();
+		return project;
 	}
 }

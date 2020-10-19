@@ -6,13 +6,14 @@ import java.util.List;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.devon.treditor.entity.whiteboard.shapes.Shape;
 
-@Document(collection = "documents")
+@Document(collection = "projects")
 public class Project {
 
 	@Id
@@ -20,19 +21,13 @@ public class Project {
 
 	@NotBlank
 	@Size(max = 20)
-	private String documentName;
+	private String name;
 
 	@DBRef
-	private List<Shape> primitives = new ArrayList<>();
+	private List<Shape> shapes = new ArrayList<>();
 
-	public Project() {}
-
-	public Project(String documentName) {
-		this.documentName = documentName;
-	}
-
-	public void addPrimitive(Shape primitive) {
-		primitives.add(primitive);
+	public void addShape(Shape shape) {
+		shapes.add(shape);
 	}
 
 	public String getId() {
@@ -43,19 +38,19 @@ public class Project {
 		this.id = id;
 	}
 
-	public void setDocumentName(String documentName) {
-		this.documentName = documentName;
+	public List<Shape> getShapes() {
+		return shapes;
 	}
 
-	public String getDocumentName() {
-		return documentName;
+	public void setShapes(List<Shape> shapes) {
+		this.shapes = shapes;
 	}
 
-	public List<Shape> getPrimitives() {
-		return primitives;
+	public String getName() {
+		return name;
 	}
 
-	public void setPrimitives(List<Shape> primitives) {
-		this.primitives = primitives;
+	public void setName(String name) {
+		this.name = name;
 	}
 }

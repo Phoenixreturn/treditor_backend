@@ -7,37 +7,61 @@ tags:
   - name: treditor
     description: Everything you can edit
 paths:
-  /helloTreditor:
+  /projects/{projectId}:
     get:
+      produces:
+        - application/json
       tags:
         - treditor
-      description: First route with swagger
-      operationId: makeHello
+      description: get project with shapes
+      operationId: getProject
+      parameters:
+        - in: path
+          name: projectId
+          type: string
+          required: true
+          description: project Id
       responses:
         '200':
-          description: OK
-          schema:
-            type: string
-  /saveProject:
-    post:
+            description: project
+            schema:
+              $ref: '#/components/schemas/Project'
+    put:
       consumes:
         - application/json
       produces:
         - application/json
       tags:
         - treditor
-      description: save shapes to any project
-      operationId: saveProject
+      operationId: updateProject
       parameters:
-        - name: projectInfo
-          in: body
+        - in: path
+          name: projectId
+          type: string
+          required: true
+          description: project Id
+        - in: body
+          name: projectInfo
           schema:
-           $ref: '#/definitions/ProjectInfo'
+            $ref: '#/definitions/ProjectInfo'
       responses:
         '200':
-          description: OK
+          description: пара ключ значение
           schema:
             $ref: '#/components/schemas/Project'
+  /projects:
+    get:
+      produces:
+        - application/json
+      tags:
+        - treditor
+      description: get all projects in map id/name
+      operationId: getProjects
+      responses:
+        '200':
+          description: пара ключ значение
+          schema:
+            $ref: '#/definitions/ProjectMap'
 
 definitions:
   ProjectInfo:
@@ -49,3 +73,9 @@ definitions:
         description: коллекция всех фигур в проекте
         items:
           $ref: '#/components/schemas/Shape'
+
+  ProjectMap:
+    tyoe: object
+    additionalProperties:
+      #type: '#/components/schemas/ObjectId'
+      type: string

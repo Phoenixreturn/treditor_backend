@@ -1,4 +1,4 @@
-package com.devon.treditor.entity.security;
+package com.devon.treditor.security.entity.security;
 
 import org.springframework.security.core.GrantedAuthority;
 

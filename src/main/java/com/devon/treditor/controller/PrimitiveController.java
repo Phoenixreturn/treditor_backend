@@ -16,19 +16,15 @@ import com.devon.treditor.repository.ShapeRepository;
 @Controller
 public class PrimitiveController {
 
-	@Autowired
-    ShapeRepository primitiveRepository;
+    ShapeRepository shapeRepository;
 
-	public PrimitiveController(ShapeRepository primitiveRepository) {
-		this.primitiveRepository = primitiveRepository;
-		primitiveRepository.insert(new Circle());
-		primitiveRepository.insert(new Circle());
-		primitiveRepository.insert(new Rectangle());
-		primitiveRepository.insert(new Rectangle());
+	@Autowired
+	public PrimitiveController(ShapeRepository shapeRepository) {
+		this.shapeRepository = shapeRepository;
 	}
 
 	@GetMapping("/primitives")
-	public List<Shape> getAllPrimitives() {
-		return primitiveRepository.findAll();
+	public List<Shape> getAllShapes() {
+		return shapeRepository.findAll();
 	}
 }

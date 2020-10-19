@@ -1,4 +1,4 @@
-package com.devon.treditor.config;
+package com.devon.treditor.security.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -14,8 +14,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 
-import com.devon.treditor.jwt.AuthEntryPointJwt;
-import com.devon.treditor.jwt.AuthTokenFilter;
+import com.devon.treditor.security.jwt.AuthEntryPointJwt;
+import com.devon.treditor.security.jwt.AuthTokenFilter;
 import com.devon.treditor.service.UserDetailsServiceImpl;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;

@@ -6,6 +6,8 @@ import java.util.List;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -14,6 +16,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import com.devon.treditor.entity.whiteboard.shapes.Shape;
 
 @Document(collection = "projects")
+@Getter
+@Setter
 public class Project {
 
 	@Id
@@ -28,29 +32,5 @@ public class Project {
 
 	public void addShape(Shape shape) {
 		shapes.add(shape);
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public List<Shape> getShapes() {
-		return shapes;
-	}
-
-	public void setShapes(List<Shape> shapes) {
-		this.shapes = shapes;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 }

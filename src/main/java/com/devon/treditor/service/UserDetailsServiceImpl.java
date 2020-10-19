@@ -7,8 +7,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.devon.treditor.entity.security.User;
-import com.devon.treditor.repository.UserRepository;
+import com.devon.treditor.security.entity.security.User;
+import com.devon.treditor.security.repository.UserRepository;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {

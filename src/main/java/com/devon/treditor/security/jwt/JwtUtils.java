@@ -1,4 +1,4 @@
-package com.devon.treditor.jwt;
+package com.devon.treditor.security.jwt;
 
 import java.util.Date;
 

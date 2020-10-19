@@ -19,7 +19,7 @@ import com.devon.treditor.repository.ShapeRepository;
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("whiteboard")
-public class ProjectController {
+public class ShapeController {
 	@Autowired
     ProjectRepository projectRepository;
 

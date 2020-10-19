@@ -1,4 +1,4 @@
-package com.devon.treditor.controller;
+package com.devon.treditor.security.controller;
 
 import java.util.HashSet;
 import java.util.List;
@@ -22,39 +22,38 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.devon.treditor.entity.security.ERole;
-import com.devon.treditor.entity.security.Role;
-import com.devon.treditor.entity.security.User;
-import com.devon.treditor.jwt.JwtUtils;
-import com.devon.treditor.payload.request.LoginRequest;
-import com.devon.treditor.payload.request.SignupRequest;
-import com.devon.treditor.payload.response.JwtResponse;
-import com.devon.treditor.payload.response.MessageResponse;
-import com.devon.treditor.repository.RoleRepository;
-import com.devon.treditor.repository.UserRepository;
+import com.devon.treditor.security.entity.security.ERole;
+import com.devon.treditor.security.entity.security.Role;
+import com.devon.treditor.security.entity.security.User;
+import com.devon.treditor.security.jwt.JwtUtils;
+import com.devon.treditor.security.payload.request.LoginRequest;
+import com.devon.treditor.security.payload.request.SignupRequest;
+import com.devon.treditor.security.payload.response.JwtResponse;
+import com.devon.treditor.security.payload.response.MessageResponse;
+import com.devon.treditor.security.repository.RoleRepository;
+import com.devon.treditor.security.repository.UserRepository;
 import com.devon.treditor.service.UserDetailsImpl;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
-
 	private static final Logger LOGGER = LoggerFactory.getLogger(AuthController.class);
 
-	@Autowired
 	AuthenticationManager authenticationManager;
-
-	@Autowired
 	UserRepository userRepository;
-
-	@Autowired
 	RoleRepository roleRepository;
-
-	@Autowired
 	PasswordEncoder encoder;
+	JwtUtils jwtUtils;
 
 	@Autowired
-	JwtUtils jwtUtils;
+	AuthController(UserRepository userRepository, RoleRepository roleRepository,
+				   AuthenticationManager authenticationManager, JwtUtils jwtUtils) {
+		this.jwtUtils = jwtUtils;
+		this.userRepository = userRepository;
+		this.roleRepository = roleRepository;
+		this.authenticationManager = authenticationManager;
+	}
 
 	@PostMapping("/signin")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
@@ -120,5 +119,10 @@ public class AuthController {
 		userRepository.save(user);
 
 		return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+	}
+
+	@Autowired
+	public void setEncoder(PasswordEncoder encoder) {
+		this.encoder = encoder;
 	}
 }

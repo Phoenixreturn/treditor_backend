@@ -16,7 +16,7 @@ import org.springframework.web.cors.CorsConfiguration;
 
 import com.devon.treditor.security.jwt.AuthEntryPointJwt;
 import com.devon.treditor.security.jwt.AuthTokenFilter;
-import com.devon.treditor.service.UserDetailsServiceImpl;
+import com.devon.treditor.security.service.UserDetailsServiceImpl;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 

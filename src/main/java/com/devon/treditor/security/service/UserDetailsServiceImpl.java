@@ -1,5 +1,6 @@
-package com.devon.treditor.service;
+package com.devon.treditor.security.service;
 
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -11,9 +12,14 @@ import com.devon.treditor.security.entity.security.User;
 import com.devon.treditor.security.repository.UserRepository;
 
 @Service
+@NoArgsConstructor
 public class UserDetailsServiceImpl implements UserDetailsService {
-	@Autowired
+
 	UserRepository userRepository;
+
+	public UserDetailsServiceImpl(UserRepository userRepository) {
+		this.userRepository = userRepository;
+	}
 
 	@Override
 	@Transactional

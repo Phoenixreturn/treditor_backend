@@ -1,4 +1,4 @@
-package com.devon.treditor.service;
+package com.devon.treditor.security.service;
 
 import java.util.Collection;
 import java.util.List;

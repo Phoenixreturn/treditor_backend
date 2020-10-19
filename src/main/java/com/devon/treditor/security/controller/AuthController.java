@@ -32,7 +32,7 @@ import com.devon.treditor.security.payload.response.JwtResponse;
 import com.devon.treditor.security.payload.response.MessageResponse;
 import com.devon.treditor.security.repository.RoleRepository;
 import com.devon.treditor.security.repository.UserRepository;
-import com.devon.treditor.service.UserDetailsImpl;
+import com.devon.treditor.security.service.UserDetailsImpl;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController

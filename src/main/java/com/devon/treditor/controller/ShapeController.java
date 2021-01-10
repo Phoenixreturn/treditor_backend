@@ -1,20 +1,14 @@
 package com.devon.treditor.controller;
 
-import java.util.List;
-import java.util.Random;
-
-import com.devon.treditor.entity.whiteboard.shapes.Circle;
-import com.devon.treditor.entity.whiteboard.shapes.Rectangle;
+import com.devon.treditor.entity.whiteboard.Project;
+import com.devon.treditor.repository.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.devon.treditor.entity.whiteboard.Project;
-import com.devon.treditor.entity.whiteboard.shapes.Shape;
-import com.devon.treditor.repository.ProjectRepository;
-import com.devon.treditor.repository.ShapeRepository;
+import java.util.Random;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController

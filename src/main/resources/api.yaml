@@ -7,6 +7,26 @@ tags:
   - name: treditor
     description: Everything you can edit
 paths:
+  /projects/{projectName}:
+    post:
+      produces:
+        - application/json
+      tags:
+        - treditor
+      description: create a new project
+      operationId: createProject
+      parameters:
+        - in: path
+          name: projectName
+          type: string
+          required: true
+          description: generated project id
+      responses:
+        '200':
+          description: project
+          schema:
+            $ref: '#/components/schemas/Project'
+
   /projects/{projectId}:
     get:
       produces:

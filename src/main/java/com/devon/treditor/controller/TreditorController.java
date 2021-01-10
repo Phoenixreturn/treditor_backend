@@ -5,25 +5,32 @@ import com.devon.treditor.payload.ProjectInfo;
 import com.devon.treditor.payload.ProjectMap;
 import com.devon.treditor.repository.ProjectRepository;
 import com.devon.treditor.repository.ShapeRepository;
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 
-import javax.validation.Valid;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @Controller
 public class TreditorController implements TreditorApi {
+    private ProjectRepository projectRepository;
+    private ShapeRepository shapeRepository;
 
     @Autowired
-    private ProjectRepository projectRepository;
-    @Autowired
-    private ShapeRepository shapeRepository;
+    TreditorController(ProjectRepository projectRepository, ShapeRepository shapeRepository) {
+        this.projectRepository = projectRepository;
+        this.shapeRepository = shapeRepository;
+    }
+
+    @Override
+    public ResponseEntity<Project> createProject(String projectName) {
+        Project newProject = new Project(projectName);
+        projectRepository.save(newProject);
+
+        return ResponseEntity.ok(newProject);
+    }
 
     @Override
     public ResponseEntity<ProjectMap> getProjects() {

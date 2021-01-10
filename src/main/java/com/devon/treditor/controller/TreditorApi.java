@@ -49,6 +49,35 @@ public interface TreditorApi {
         return getRequest().map(r -> r.getHeader("Accept"));
     }
 
+    @ApiOperation(value = "", nickname = "createProject", notes = "create a new project", response = Project.class, tags={ "treditor", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "project", response = Project.class) })
+    @RequestMapping(value = "/projects/{projectName}",
+        produces = { "application/json" }, 
+        method = RequestMethod.POST)
+    default ResponseEntity<Project> _createProject(@ApiParam(value = "generated project id",required=true) @PathVariable("projectName") String projectName
+) {
+        return createProject(projectName);
+    }
+
+    // Override this method
+    default ResponseEntity<Project> createProject(String projectName) {
+        if(getObjectMapper().isPresent() && getAcceptHeader().isPresent()) {
+            if (getAcceptHeader().get().contains("application/json")) {
+                try {
+                    return new ResponseEntity<>(getObjectMapper().get().readValue("\"{}\"", Project.class), HttpStatus.NOT_IMPLEMENTED);
+                } catch (IOException e) {
+                    log.error("Couldn't serialize response for content type application/json", e);
+                    return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+                }
+            }
+        } else {
+            log.warn("ObjectMapper or HttpServletRequest not configured in default TreditorApi interface so no example is generated");
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+    }
+
+
     @ApiOperation(value = "", nickname = "getProject", notes = "get project with shapes", response = Project.class, tags={ "treditor", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "project", response = Project.class) })

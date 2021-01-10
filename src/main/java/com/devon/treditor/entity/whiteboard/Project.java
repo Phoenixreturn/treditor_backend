@@ -7,6 +7,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
@@ -18,6 +19,7 @@ import com.devon.treditor.entity.whiteboard.shapes.Shape;
 @Document(collection = "projects")
 @Getter
 @Setter
+@NoArgsConstructor
 public class Project {
 
 	@Id
@@ -29,6 +31,10 @@ public class Project {
 
 	@DBRef
 	private List<Shape> shapes = new ArrayList<>();
+
+	public Project(String name) {
+		this.name = name;
+	}
 
 	public void addShape(Shape shape) {
 		shapes.add(shape);
